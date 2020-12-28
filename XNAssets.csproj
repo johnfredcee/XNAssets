@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame.Framework\MonoGame.Framework.WindowsDX.csproj" />
+    <ProjectReference Include="..\..\ThirdParty\StbImageSharp\src\StbImageSharp.csproj" />
   </ItemGroup>
 
 </Project>
