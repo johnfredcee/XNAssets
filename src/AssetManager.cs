@@ -76,7 +76,6 @@ namespace XNAssets
 #endif
 			SetAssetLoader(new StringLoader());
 			SetAssetLoader(new Texture2DLoader());
-			SetAssetLoader(new SpriteFontLoader());
 		}
 
 		public static void SetAssetLoader<T>(IAssetLoader<T> loader, bool storeInCache = true)

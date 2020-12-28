@@ -1,19 +1,44 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<OutputType>Library</OutputType>
 	<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<DefineConstants>TRACE;STBSHARP_INTERNAL;MONOGAME</DefineConstants>
+	 <Authors>XNAssetsTeam</Authors>
+    <Product>XNAssets</Product>
+    <Description>Alternative to MonoGame Content Pipeline that loads raw assets</Description>
+    <PackageLicenseUrl>https://en.wikipedia.org/wiki/MIT_License</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/rds1983/XNAssets</PackageProjectUrl>
+    <NoWarn>NU1701</NoWarn>
+    <AssemblyName>XNAssets</AssemblyName>
+    <RootNamespace>XNAssets</RootNamespace>
+	<Version>1.0.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	 <PackageId>XNAssets</PackageId>
+    <OutputPath>bin\MonoGame\$(Configuration)</OutputPath>
+	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+ 	<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="src\*.cs" /> 
 	<Compile Include="src\Utility\*.cs" /> 
+    <Compile Include="deps\StbImageSharp\src\**\*.cs" LinkBase="ThirdParty\StbImageSharp" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame.Framework\MonoGame.Framework.WindowsDX.csproj" />
-    <ProjectReference Include="..\..\ThirdParty\StbImageSharp\src\StbImageSharp.csproj" />
-  </ItemGroup>
+  </ItemGroup> 
 
+  
 </Project>
