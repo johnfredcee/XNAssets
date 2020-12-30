@@ -2,12 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-#if !STRIDE
 using Microsoft.Xna.Framework.Graphics;
-#else
-using Stride.Graphics;
-#endif
 
 namespace XNAssets
 {
@@ -71,9 +66,7 @@ namespace XNAssets
 
 		private static void RegisterDefaultLoaders()
 		{
-#if !STRIDE
 			SetAssetLoader(new SoundEffectLoader());
-#endif
 			SetAssetLoader(new StringLoader());
 			SetAssetLoader(new Texture2DLoader());
 		}

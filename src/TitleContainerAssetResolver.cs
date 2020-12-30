@@ -19,7 +19,7 @@ namespace XNAssets
 			BaseFolder = baseFolder;
 		}
 
-		public Stream Open(string assetName)
+		private string ResolvePath(string assetName)
 		{
 			if (AssetManager.SeparatorSymbol != Path.DirectorySeparatorChar)
 			{
@@ -30,8 +30,12 @@ namespace XNAssets
 			{
 				assetName = Path.Combine(BaseFolder, assetName);
 			}
-
-			return TitleContainer.OpenStream(assetName);
+			return assetName;
+		}
+		public Stream Open(string assetName)
+		{
+			var resolvedPath = ResolvePath(assetName);
+			return TitleContainer.OpenStream(resolvedPath);
 		}
 	}
 }

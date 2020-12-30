@@ -5,5 +5,6 @@ namespace XNAssets
 	public interface IAssetResolver
 	{
 		Stream Open(string assetName);
+		
 	}
 }

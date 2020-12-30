@@ -1,11 +1,6 @@
 ﻿using System;
 using System.IO;
-
-#if !STRIDE
 using Microsoft.Xna.Framework.Graphics;
-#else
-using Stride.Graphics;
-#endif
 
 namespace XNAssets
 {
@@ -65,7 +60,6 @@ namespace XNAssets
 
 			return result;
 		}
-
 		public T Load<T>(string assetName)
 		{
 			return _assetManager.Load<T>(AssetManager.CombinePath(_baseFolder, assetName));
