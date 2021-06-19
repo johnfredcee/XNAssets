@@ -60,7 +60,7 @@ namespace XNAssets
 
 			return result;
 		}
-		public T Load<T>(string assetName)
+		public T Load<T>(string assetName)  where T : class
 		{
 			return _assetManager.Load<T>(AssetManager.CombinePath(_baseFolder, assetName));
 		}

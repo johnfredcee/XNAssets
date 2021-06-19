@@ -5,12 +5,10 @@ namespace XNAssets
 	public class FileAssetResolver : IAssetResolver
 	{
 		public string BaseFolder { get; set; }
-
 		public FileAssetResolver(string baseFolder)
 		{
 			BaseFolder = baseFolder;
 		}
-
 		private string ResolvePath(string assetName)
 		{
 			if (AssetManager.SeparatorSymbol != Path.DirectorySeparatorChar)
@@ -27,11 +25,8 @@ namespace XNAssets
 
 		public Stream Open(string assetName)
 		{
-			var resolvedPath = ResolvePath(assetName);	
+			var resolvedPath = ResolvePath(assetName);
 			return File.OpenRead(resolvedPath);
 		}
-
-
-
 	}
 }

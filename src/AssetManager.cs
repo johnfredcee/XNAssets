@@ -11,9 +11,7 @@ namespace XNAssets
 		public const char SeparatorSymbol = '/';
 		private readonly Dictionary<Type, Dictionary<string, object>> _cache = new Dictionary<Type, Dictionary<string, object>>();
 		private IAssetResolver _assetResolver;
-
 		public readonly AssetManagerSettings Settings = new AssetManagerSettings();
-
 		public IAssetResolver AssetResolver
 		{
 			get { return _assetResolver; }
@@ -28,22 +26,17 @@ namespace XNAssets
 				_assetResolver = value;
 			}
 		}
-
 		public static Dictionary<Type, LoaderInfo> Loaders { get; } = new Dictionary<Type, LoaderInfo>();
-
 		public GraphicsDevice GraphicsDevice { get; }
-
 		static AssetManager()
 		{
 			RegisterDefaultLoaders();
 		}
-
 		public AssetManager(GraphicsDevice graphicsDevice, IAssetResolver assetResolver)
 		{
 			GraphicsDevice = graphicsDevice ?? throw new ArgumentNullException(nameof(graphicsDevice));
 			AssetResolver = assetResolver ?? throw new ArgumentNullException(nameof(assetResolver));
 		}
-
 		public static string CombinePath(string _base, string url)
 		{
 			if (string.IsNullOrEmpty(_base))
@@ -63,7 +56,6 @@ namespace XNAssets
 
 			return _base + SeparatorSymbol + url;
 		}
-
 		private static void RegisterDefaultLoaders()
 		{
 			SetAssetLoader(new SoundEffectLoader());
@@ -99,15 +91,38 @@ namespace XNAssets
 			return stream;
 		}
 
-		public T Load<T>(string assetName)
+
+		public T Get<T>(string assetName) where T : class
 		{
+			
 			var type = typeof(T);
 			assetName = assetName.Replace('\\', SeparatorSymbol);
-
+			// is this type cached?
 			Dictionary<string, object> cache;
 			if (_cache.TryGetValue(type, out cache))
 			{
 				object cached;
+				// if so, look in the cached assest for that type
+				if (cache.TryGetValue(assetName, out cached))
+				{
+					// Found in cache
+					return (T)cached;
+				}
+			}
+			return null;
+		}
+
+		public T Load<T>(string assetName) where T : class
+		{
+			var type = typeof(T);
+			assetName = assetName.Replace('\\', SeparatorSymbol);
+
+			// is this type cached?
+			Dictionary<string, object> cache;
+			if (_cache.TryGetValue(type, out cache))
+			{
+				object cached;
+				// if so, look in the cached assest for that type
 				if (cache.TryGetValue(assetName, out cached))
 				{
 					// Found in cache

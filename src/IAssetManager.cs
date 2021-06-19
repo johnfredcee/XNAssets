@@ -4,9 +4,9 @@ namespace XNAssets
 {
 	public interface IAssetManager
 	{
-		T Load<T>(string assetName);
+		T Get<T>(string assetName) where T : class;
+		T Load<T>(string assetName) where T : class;
 		Stream Open(string path);
-
 		void ClearCache();
 	}
 }
