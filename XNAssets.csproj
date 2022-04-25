@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
 	<OutputType>Library</OutputType>
 	<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -37,7 +37,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame.Framework\MonoGame.Framework.WindowsDX.csproj" />
-	  <ProjectReference Include="..\..\Libraries\StbImageSharp\src\StbImageSharp.csproj" />
+	  <ProjectReference Include="..\..\ThirdParty\StbImageSharp\src\StbImageSharp.csproj" />
   </ItemGroup> 
 
   
