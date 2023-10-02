@@ -33,12 +33,10 @@
   <ItemGroup>
     <Compile Include="src\*.cs" /> 
 	<Compile Include="src\Utility\*.cs" /> 
-    </ItemGroup>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame.Framework\MonoGame.Framework.WindowsDX.csproj" />
-	  <ProjectReference Include="..\..\ThirdParty\StbImageSharp\src\StbImageSharp.csproj" />
-  </ItemGroup> 
-
-  
-</Project>
+	<ProjectReference Include="..\..\ThirdParty\StbImageSharp\src\StbImageSharp.csproj" />
+  </ItemGroup>
+  </Project>
